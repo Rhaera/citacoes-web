@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-
 @RestController
 @RequestMapping("/citacoes")
 public class CitacoesController {
