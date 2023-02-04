@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ import java.util.Scanner;
 public class CitacoesController {
 
     private final List<Citacao> citacoes = new ArrayList<>();
+    private FileWriter fWriter;
 
     public CitacoesController() throws IOException {
         carregarCitacoesDoArquivo();
@@ -30,8 +33,11 @@ public class CitacoesController {
 
     @PostMapping("/citacao")
     @Operation(summary = "Insira uma nova frase")
-    public void colocarCitacao(Citacao citacao) {
-        citacoes.add(citacao);        
+    public void colocarCitacao(Citacao citacao) throws IOException {
+        fWriter = new FileWriter(new ClassPathResource("citacoes.txt").getInputStream().toString());        
+        BufferedWriter bWriter = new BufferedWriter(fWriter);
+        bWriter.write(citacao.getConteudo());
+        bWriter.close();
     }
 
     @GetMapping("/citacoes")
