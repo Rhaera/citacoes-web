@@ -33,10 +33,10 @@ public class CitacoesController {
 
     @PostMapping("/citacao")
     @Operation(summary = "Insira uma nova frase")
-    public void colocarCitacao(Citacao citacao) throws IOException {
+    public void colocarCitacao(String citacao) throws IOException {
         fWriter = new FileWriter(new ClassPathResource("citacoes.txt").getInputStream().toString());        
         BufferedWriter bWriter = new BufferedWriter(fWriter);
-        bWriter.write(citacao.getConteudo());
+        bWriter.write(citacao);
         bWriter.close();
     }
 
