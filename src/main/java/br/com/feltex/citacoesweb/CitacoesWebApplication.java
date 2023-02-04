@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @OpenAPIDefinition(
 		info = @Info(title = "Api de Citações", version = "3.0.1", description = "API do Canal Feltex"),
 		servers = {
-				@Server(url = "http://localhost:8080"),
+				@Server(url = "http://localhost:8081"),
 				@Server(url = "http://www.feltex.com.br/citacoes-web"),
 		}
 )

@@ -18,7 +18,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 @RestController
-@RequestMapping("/citacoes")
+//@RequestMapping("/citacoes")
 public class CitacoesController {
 
     private final List<Citacao> citacoes = new ArrayList<>();
@@ -27,7 +27,7 @@ public class CitacoesController {
         carregarCitacoesDoArquivo();
     }
 
-    @GetMapping
+    @GetMapping("/citacoes")
     @Operation(summary = "Aprenda novas frases com filósofos")
     public ResponseEntity<Citacao> lerCitacao() {
         return new ResponseEntity<>(getCitacao(), HttpStatus.OK);
@@ -37,7 +37,6 @@ public class CitacoesController {
         int index = new Random().nextInt(citacoes.size());
         return citacoes.get(index);
     }
-
 
     private void carregarCitacoesDoArquivo() throws IOException {
         try (InputStream input = new ClassPathResource("citacoes.txt").getInputStream()) {
